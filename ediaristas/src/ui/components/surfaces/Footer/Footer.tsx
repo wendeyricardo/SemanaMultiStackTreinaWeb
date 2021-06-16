@@ -9,9 +9,9 @@ import { Typography, Box } from "@material-ui/core";
 
 const Footer = () => {
   return (
-    <FooterStyled sx={{ maxWidth: "400px" }}>
+    <FooterStyled>
       <FooterContainer>
-        <Box>
+        <Box sx={{ maxWidth: "400px" }}>
           <FooterTitle>Quem somos</FooterTitle>
           <Typography variant={"body2"} sx={{ marginTop: "16px" }}>
             E-Diaristas te ajuda a encontrar um profissional perfeito para
@@ -24,7 +24,7 @@ const Footer = () => {
           <FooterTitle>Baixe nossos aplicativos</FooterTitle>
           <AppList>
             <li>
-              <a href={"/"} target={"_blank"} rel={"nooperner noreferrer"}>
+              <a href={"/"} target={"_blank"} rel={"noopener noreferrer"}>
                 <img src={"/img/logos/app-store.png"} alt={"App Store"} />
               </a>
             </li>
