@@ -25,13 +25,14 @@ export default function Home() {
       <Container>
         <FormElementsContainer>
           <TextFieldMask
-            mask={"99.999-99"}
+            mask={"99.999-999"}
             label={"digite seu CEP"}
             fullWidth
             variant={"outlined"}
             value={cep}
             onChange={(event) => setCep(event.target.value)}
           />
+          {cepValido}
           <Typography color={"error"}>CEP inválido</Typography>
 
           <Button
