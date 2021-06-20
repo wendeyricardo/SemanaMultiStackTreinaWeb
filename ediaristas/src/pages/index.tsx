@@ -60,48 +60,47 @@ export default function Home() {
             {carregando ? <CircularProgress size={20} /> : "Buscar"}
           </Button>
         </FormElementsContainer>
-        {buscaFeita && (
-          <ProfissionaisPaper>
-            <ProfissionaisContainer>
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-              <UserInformation
-                name={"Wendey Ricardo"}
-                picture={"https://github.com/wendeyricardo.png"}
-                rating={3}
-                description={"benfica"}
-              />
-            </ProfissionaisContainer>
-          </ProfissionaisPaper>
-        )}
+        {buscaFeita &&
+          (diaristas.length > 0 ? (
+            <ProfissionaisPaper>
+              <ProfissionaisContainer>
+                {diaristas.map((item, index) => {
+                  return (
+                    <UserInformation
+                      key={index}
+                      name={item.nome_completo}
+                      picture={item.foto_usuario}
+                      rating={item.reputacao}
+                      description={item.cidade}
+                    />
+                  );
+                })}
+              </ProfissionaisContainer>
+
+              <Container sx={{ textAlign: "center" }}>
+                {diaristasRestantes > 0 && (
+                  <Typography sx={{ mt: 5 }}>
+                    ... e mais {diaristasRestantes}{" "}
+                    {diaristasRestantes > 1
+                      ? "profissionais atendem"
+                      : "profissional atende"}
+                    {""} ao seu endereço.
+                  </Typography>
+                )}
+                <Button
+                  variant={"contained"}
+                  color={"secondary"}
+                  sx={{ mt: 5 }}
+                >
+                  Contratar um profissional
+                </Button>
+              </Container>
+            </ProfissionaisPaper>
+          ) : (
+            <Typography align={"center"} color={"textPrimary"}>
+              Ainda não temos nenhuma diarista disponível em sua região
+            </Typography>
+          ))}
       </Container>
     </div>
   );
